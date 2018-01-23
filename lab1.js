@@ -1,3 +1,5 @@
+// I pledge my honor that I have abided by the Stevens Honor System
+
 function questionOne(arr) {
     return arr.map(x => x*x).reduce((x,y) => x+y, 0)
 }
