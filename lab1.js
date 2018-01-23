@@ -3,7 +3,7 @@ function questionOne(arr) {
 }
 
 function questionTwo(num) { 
-    if (num == 0) return 0
+    if (num < 1) return 0
     if (num == 1) return 1
     return questionTwo(num-1) + questionTwo(num-2)
 }
@@ -13,7 +13,7 @@ function questionThree(text) {
 }
 
 function questionFour(num) {
-    if (num == -1) return NaN
+    if (num < 0) return NaN
     if (num == 0) return 1 
     return num * questionFour(num - 1)
 }

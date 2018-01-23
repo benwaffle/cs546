@@ -60,7 +60,7 @@ console.log(lab1.questionThree("Mr. and Mrs. Dursley, of number four, Privet Dri
  * question 4
  */
 
-assert(isNaN(lab1.questionFour(-1)))
+assert(isNaN(lab1.questionFour(-2)))
 assert(lab1.questionFour(0) === 1)
 assert(lab1.questionFour(1) === 1)
 assert(lab1.questionFour(2) === 2)
