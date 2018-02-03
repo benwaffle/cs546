@@ -1,0 +1,7 @@
+{
+  "name": "cs-546-lab-2",
+  "author": "Benjamin Iofel - 10409085",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
