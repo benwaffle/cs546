@@ -1,22 +1,24 @@
-function deepEquality(obj1, obj2, toplevel = true) {
-  if (![2,3].includes(arguments.length)) throw 'wrong number of arguments'
-  if (toplevel) {
-    if (typeof obj1 !== 'object') throw 'invalid obj1'
-    if (typeof obj2 !== 'object') throw 'invalid obj2'
-  }
+function deepEquality(obj1, obj2) {
+  if (arguments.length !== 2) throw 'wrong number of arguments'
+  if (typeof obj1 !== 'object' || typeof obj2 !== 'object') throw 'both arguments not objects'
   if (obj1 === obj2) return true
   if (obj1 === null || obj2 === null) return false
 
-  if (typeof obj1 === 'object' && typeof obj2 === 'object') {
-    if (Object.keys(obj1).length !== Object.keys(obj2).length)
+  if (Object.keys(obj1).length !== Object.keys(obj2).length)
+    return false
+
+  for (const key of Object.keys(obj1)) {
+    if (!(key in obj2))
       return false
-    for (const key of Object.keys(obj1))
-      if (!(key in obj2) || !deepEquality(obj1[key], obj2[key], false))
-        return false
-    return true
+    if (obj1[key] === obj2[key])
+      continue;
+    if (typeof obj1[key] !== 'object' || typeof obj2[key] !== 'object')
+      return false
+    if (!deepEquality(obj1[key], obj2[key]))
+      return false
   }
 
-  return false
+  return true
 }
 
 
