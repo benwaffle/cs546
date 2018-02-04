@@ -25,5 +25,5 @@ module.exports = {
     if (typeof radius !== 'number' || radius < 0) throw 'invalid radius'
 
     return 4 * Math.PI * radius * radius
-  },
+  }
 }
