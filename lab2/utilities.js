@@ -1,6 +1,8 @@
 function deepEquality(obj1, obj2) {
+  if (arguments.length != 2) throw 'wrong number of arguments'
+  if (typeof obj1 !== 'object') throw 'invalid obj1'
+  if (typeof obj2 !== 'object') throw 'invalid obj2'
   if (obj1 === obj2) return true
-  if (typeof obj1 !== typeof obj2) return false
   if (obj1 === null || obj2 === null) return false
 
   if (typeof obj1 === 'object' && typeof obj2 === 'object') {
@@ -20,12 +22,14 @@ module.exports = {
   deepEquality,
 
   uniqueElements(arr) {
+    if (arguments.length != 1) throw 'wrong number of arguments'
     if (!Array.isArray(arr)) throw 'argument is not an array'
 
     return new Set(arr).size
   },
 
   countOfEachCharacterInString(str) {
+    if (arguments.length != 1) throw 'wrong number of arguments'
     if (typeof str !== 'string') throw 'argument is not a string'
 
     return str.split('').sort().reduce((a, c) => {

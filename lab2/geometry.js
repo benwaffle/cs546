@@ -16,13 +16,13 @@ module.exports = {
   },
 
   volumeOfSphere(radius) {
-    if (typeof radius !== 'number' || number < 0) throw 'invalid radius'
+    if (typeof radius !== 'number' || radius < 0) throw 'invalid radius'
 
-    return 4/3 * Math.PI * radius * radius
+    return 4/3 * Math.PI * radius * radius * radius
   },
 
   surfaceAreaOfSphere(radius) {
-    if (typeof radius !== 'number' || number < 0) throw 'invalid radius'
+    if (typeof radius !== 'number' || radius < 0) throw 'invalid radius'
 
     return 4 * Math.PI * radius * radius
   },
