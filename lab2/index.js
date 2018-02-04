@@ -49,6 +49,7 @@ assert(utilities.deepEquality(null, null) === true)
 assert(utilities.deepEquality([1,2,3], [1,2,3]) === true)
 assert(utilities.deepEquality([1,2,3], []) === false)
 assert.throws(() => utilities.deepEquality())
+assert.throws(() => utilities.deepEquality({}, {}, {}))
 assert.throws(() => utilities.deepEquality(1, 1))
 assert.throws(() => utilities.deepEquality('x', 'x'))
 
@@ -79,5 +80,16 @@ assert(utilities.deepEquality(
     'v': 1
   }
 ))
+assert(utilities.deepEquality(
+  utilities.countOfEachCharacterInString('asdf'),
+  {
+    a: 1,
+    s: 1,
+    d: 1,
+    f: 1
+  }
+))
+assert.throws(() => utilities.countOfEachCharacterInString())
+assert.throws(() => utilities.countOfEachCharacterInString('asdf', 'asdf'))
 
 console.log('✓ all tests passed')
