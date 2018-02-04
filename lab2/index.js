@@ -11,20 +11,20 @@ function floatEq(a, b) {
 assert(geometry.volumeOfRectangularPrism(3, 3, 3) === 3*3*3)
 assert(geometry.volumeOfRectangularPrism(1, 1, 1) === 1)
 assert(geometry.volumeOfRectangularPrism(3.1, 3.2, 3.3) === 3.1 * 3.2 * 3.3)
-assert.throws(() => geometry.volumeOfRectangularPrism(3, -1, 3))
+assert.throws(() => geometry.volumeOfRectangularPrism(3, 0, 3))
 assert.throws(() => geometry.volumeOfRectangularPrism(3))
 assert.throws(() => geometry.volumeOfRectangularPrism())
 
 assert(geometry.surfaceAreaOfRectangularPrism(3, 3, 3) === 3*3*6)
 assert(geometry.surfaceAreaOfRectangularPrism(1, 1, 1) === 1*1*6)
 assert(geometry.surfaceAreaOfRectangularPrism(3.1, 3.2, 3.3) === 3.1*3.2*2 + 3.2*3.3*2 + 3.1*3.3*2)
-assert.throws(() => geometry.surfaceAreaOfRectangularPrism(3, -1, 3))
+assert.throws(() => geometry.surfaceAreaOfRectangularPrism(3, 0, 3))
 assert.throws(() => geometry.surfaceAreaOfRectangularPrism(3))
 assert.throws(() => geometry.surfaceAreaOfRectangularPrism())
 
 assert(floatEq(geometry.volumeOfSphere(5), 523.599))
 assert(floatEq(geometry.volumeOfSphere(1), 4.188))
-assert(floatEq(geometry.volumeOfSphere(0), 0))
+assert.throws(() => geometry.volumeOfSphere(0))
 assert.throws(() => geometry.volumeOfSphere(-1))
 assert.throws(() => geometry.volumeOfSphere())
 
@@ -41,6 +41,8 @@ assert(utilities.deepEquality(null, null) === true)
 assert(utilities.deepEquality([1,2,3], [1,2,3]) === true)
 assert(utilities.deepEquality([1,2,3], []) === false)
 assert.throws(() => utilities.deepEquality())
+assert.throws(() => utilities.deepEquality(1, 1))
+assert.throws(() => utilities.deepEquality('x', 'x'))
 
 // TODO deepEquality for numbers
 
