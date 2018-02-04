@@ -67,17 +67,17 @@ assert(utilities.deepEquality(
   {
     ' ': 6,
     ',': 1,
-    'H': 1,
-    'e': 5,
-    'h': 2,
-    'i': 3,
-    'l': 2,
-    'n': 2,
-    'o': 2,
-    'p': 1,
-    's': 1,
-    't': 2,
-    'v': 1
+    H: 1,
+    e: 5,
+    h: 2,
+    i: 3,
+    l: 2,
+    n: 2,
+    o: 2,
+    p: 1,
+    s: 1,
+    t: 2,
+    v: 1
   }
 ))
 assert(utilities.deepEquality(
