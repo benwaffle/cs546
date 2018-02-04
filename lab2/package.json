@@ -2,6 +2,10 @@
   "name": "cs-546-lab-2",
   "author": "Benjamin Iofel - 10409085",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint *.js"
+  },
+  "dependencies": {
+    "eslint": "^4.17.0"
   }
 }

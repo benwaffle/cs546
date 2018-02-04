@@ -3,9 +3,9 @@ const geometry = require('./geometry')
 const utilities = require('./utilities')
 
 function floatEq(a, b) {
-    if (typeof a !== 'number' || typeof b !== 'number') throw 'invalid args'
-
-    return Math.abs(a-b) < 0.001
+  if (typeof a !== 'number' || typeof b !== 'number') throw 'invalid args'
+  
+  return Math.abs(a-b) < 0.001
 }
 
 assert(geometry.volumeOfRectangularPrism(3, 3, 3) === 3*3*3)
@@ -53,8 +53,6 @@ assert.throws(() => utilities.deepEquality({}, {}, {}))
 assert.throws(() => utilities.deepEquality(1, 1))
 assert.throws(() => utilities.deepEquality('x', 'x'))
 
-// TODO deepEquality for numbers
-
 assert.throws(() => utilities.uniqueElements([], []))
 assert.throws(() => utilities.uniqueElements())
 assert(utilities.uniqueElements([1,1,2,3,4]) == 4)
@@ -92,4 +90,5 @@ assert(utilities.deepEquality(
 assert.throws(() => utilities.countOfEachCharacterInString())
 assert.throws(() => utilities.countOfEachCharacterInString('asdf', 'asdf'))
 
+/* eslint no-console: "off" */
 console.log('✓ all tests passed')

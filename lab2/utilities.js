@@ -11,7 +11,7 @@ function deepEquality(obj1, obj2) {
     if (!(key in obj2))
       return false
     if (obj1[key] === obj2[key]) // strings, numbers
-      continue;
+      continue
     if (typeof obj1[key] !== 'object' || typeof obj2[key] !== 'object') // only recurse on objects
       return false
     if (!deepEquality(obj1[key], obj2[key]))
