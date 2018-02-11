@@ -1,13 +1,10 @@
 {
   "author": "Ben Iofel - 10409085",
   "scripts": {
-    "start": "node index.js",
-    "lint": "eslint *.js"
+    "start": "node index.js"
   },
   "dependencies": {
+    "deep-eql": "^3.0.1",
     "fs-extra": "^5.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^4.17.0"
   }
 }
