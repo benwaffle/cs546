@@ -4,7 +4,7 @@ const utilities = require('./utilities')
 
 function floatEq(a, b) {
   if (typeof a !== 'number' || typeof b !== 'number') throw 'invalid args'
-  
+
   return Math.abs(a-b) < 0.001
 }
 
