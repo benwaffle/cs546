@@ -12,7 +12,7 @@ async function assertThrowsAsync(func) {
   assert.throws(() => {})
 }
 
-async function main() {
+;(async () => {
   try {
     // invalid args
     await assertThrowsAsync(() => fileData.getFileAsString())
@@ -35,11 +35,12 @@ async function main() {
     assert(eq(await fileData.getFileAsJSON('test.json'), testJson))
     await fs.unlink('test.json')
 
+    // metrics
+
+
     // done
     console.log('✓ all tests passed')
   } catch (e) {
     console.error(e)
   }
-}
-
-main()
+})()
