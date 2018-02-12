@@ -1,5 +1,6 @@
 module.exports = {
   simplify(text) {
+    if (typeof text !== 'string') throw new Error('missing text')
     return text
       .toLowerCase()
       .split('')

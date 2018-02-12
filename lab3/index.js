@@ -1,7 +1,8 @@
 const assert = require('assert')
-const fileData = require('./fileData')
 const fs = require('fs-extra')
 const eq = require('deep-eql')
+const fileData = require('./fileData')
+const textMetrics = require('./textMetrics')
 
 async function assertThrowsAsync(func) {
   try {
@@ -14,6 +15,8 @@ async function assertThrowsAsync(func) {
 
 ;(async () => {
   try {
+    /// file data
+
     // invalid args
     await assertThrowsAsync(() => fileData.getFileAsString())
     await assertThrowsAsync(() => fileData.getFileAsJSON())
@@ -35,8 +38,35 @@ async function assertThrowsAsync(func) {
     assert(eq(await fileData.getFileAsJSON('test.json'), testJson))
     await fs.unlink('test.json')
 
-    // metrics
+    /// metrics
 
+    // invalid args
+    assert.throws(() => textMetrics.simplify())
+    assert.throws(() => textMetrics.createMetrics())
+
+    assert(textMetrics.simplify('A1+"b  cd  ') === 'ab cd')
+
+    assert(eq(
+      textMetrics.createMetrics("Helllo, my -! This is a great day to say helllo.\n\n\tHelllo! 2 3 4 23"),
+      {
+        totalLetters: 40,
+        totalWords: 11,
+        uniqueWords: 9,
+        longWords: 3,
+        averageWordLength: 3.6363636363636362,
+        wordOccurrences: {
+          a: 1,
+          day: 1,
+          great: 1,
+          helllo: 3,
+          is: 1,
+          my: 1,
+          say: 1,
+          this: 1,
+          to: 1
+        }
+      }
+    ))
 
     // done
     console.log('✓ all tests passed')
