@@ -12,6 +12,10 @@ module.exports = async () => {
   return await connection.db(settings.mongo.database)
 }
 
+module.exports.todoItems = async () => {
+  return await (await module.exports()).collection('todoItems')
+}
+
 module.exports.close = async () => {
   if (connection) {
     connection.close()

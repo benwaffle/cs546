@@ -2,12 +2,14 @@
   "author": "Benjamin Iofel - 10409085",
   "scripts": {
     "start": "node app.js",
-    "lint": "eslint *.js"
+    "lint": "eslint *.js",
+    "test": "jest"
   },
   "devDependencies": {
     "eslint": "^4.18.0"
   },
   "dependencies": {
+    "jest": "^22.3.0",
     "mongodb": "^3.0.2",
     "uuid": "^3.2.1"
   }

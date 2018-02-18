@@ -1,10 +1,5 @@
-const mongo = require('./connection')
+const todoItems = require('./connection').todoItems
 const uuid = require('uuid/v4')
-
-async function todoItems() {
-  const db = await mongo()
-  return await db.collection('todoItems')
-}
 
 async function createTask(title, description) {
   if (typeof title !== 'string') throw new Error('invalid title')
@@ -49,7 +44,7 @@ async function completeTask(_id) {
     completed: true,
     completedAt: new Date()
   }})
-  console.log(res)
+
   if (res.modifiedCount === 0) throw new Error(`could not update ${_id}`)
 
   return await this.getTask(_id)
@@ -61,7 +56,6 @@ async function removeTask(_id) {
   const coll = await todoItems()
   const res = await coll.removeOne({ _id })
 
-  console.log(res)
   if (res.deletedCount === 0) throw new Error(`could not delete ${_id}`)
 
   return true

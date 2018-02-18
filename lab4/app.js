@@ -1,7 +1,7 @@
-const db = require('./connection')
+const conn = require('./connection')
 const todo = require('./todo')
 
-;(async () => {
+async function main() {
   const task1 = await todo.createTask(
     'Ponder Dinosaurs',
     'Has Anyone Really Been Far Even as Decided to Use Even Go Want to do Look More Like?'
@@ -21,5 +21,7 @@ const todo = require('./todo')
 
   console.log(await todo.completeTask(task2._id))
 
-  db.close()
-})()
+  conn.close()
+}
+
+main()
