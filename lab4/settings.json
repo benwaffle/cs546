@@ -1,0 +1,6 @@
+{
+  "mongo": {
+    "server": "mongodb://localhost",
+    "database": "Benjamin_Iofel_lab4"
+  }
+}
