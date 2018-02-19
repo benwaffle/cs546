@@ -21,6 +21,8 @@ test('can create task', async () => {
 test('can get task', async () => {
   const task1 = await todo.createTask('title', 'desc')
   await expect(todo.getTask(task1._id)).resolves.toEqual(task1)
+
+  await expect(todo.getTask('asdf')).rejects.toBeDefined()
 })
 
 test('can get all tasks', async () => {
@@ -50,12 +52,16 @@ test('can complete task', async () => {
       completedAt: expect.any(Date)
     })
   )
+
+  await expect(todo.completeTask('asdf')).rejects.toBeDefined()
 })
 
 test('can remove task', async () => {
   const task1 = await todo.createTask('title', 'desc')
   await expect(todo.removeTask(task1._id)).resolves.toBe(true)
   await expect(todo.getTask(task1._id)).rejects.toBeDefined()
+
+  await expect(todo.removeTask('asdf')).rejects.toBeDefined()
 })
 
 afterAll(conn.close)
