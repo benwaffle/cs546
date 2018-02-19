@@ -35,6 +35,23 @@ test('can get all tasks', async () => {
   )
 })
 
+test('can complete task', async () => {
+  const task1 = await todo.createTask('title', 'desc')
+
+  await expect(todo.completeTask(task1._id)).resolves.toEqual(
+    expect.objectContaining({
+      completed: true,
+      completedAt: expect.any(Date)
+    })
+  )
+  await expect(todo.getTask(task1._id)).resolves.toEqual(
+    expect.objectContaining({
+      completed: true,
+      completedAt: expect.any(Date)
+    })
+  )
+})
+
 test('can remove task', async () => {
   const task1 = await todo.createTask('title', 'desc')
   await expect(todo.removeTask(task1._id)).resolves.toBe(true)
