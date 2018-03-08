@@ -13,6 +13,20 @@ module.exports = {
 
     async get(_id) {
         const db = await coll
-        return await db.findOne({ _id })
+        const recipe = await db.findOne({ _id })
+        if (recipe == null)
+            throw {error: `no such recipe: ${_id}`}
+        return recipe
+    },
+
+    async create(recipe) {
+        const db = await coll
+        const _id = uuid()
+        const res = await db.insert({ _id, ...recipe })
+        if (res.error)
+            throw {error: res.error}
+        if (res.insertedCount != 1)
+            throw {error: 'something bad happened... 0 or multiple elements were inserted'}
+        return this.get(_id)
     }
 }
