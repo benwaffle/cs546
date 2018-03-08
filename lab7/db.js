@@ -43,10 +43,11 @@ module.exports = {
     },
 
     async delete(_id) {
+        //const db = await coll
         const res = await db.deleteOne({ _id })
         if (res.error)
             throw {error: res.error}
         if (res.result.deletedCount != 1)
-            throw {error: 'something bad happened'}
+            throw {error: 'deletedCount = 0'}
     }
 }
