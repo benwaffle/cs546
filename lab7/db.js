@@ -43,7 +43,7 @@ module.exports = {
     },
 
     async delete(_id) {
-        //const db = await coll
+        const db = await coll
         const res = await db.deleteOne({ _id })
         if (res.error)
             throw {error: res.error}

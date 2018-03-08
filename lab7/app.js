@@ -112,8 +112,11 @@ app.use('/recipes', router)
 
 // unhandled path or error
 app.use((err, req, res, next) => {
-    res.status(err.status || 400)
-    res.json(err)
+    res.status(err.status || 400).json({
+        error: err,
+        message: err.message,
+        stack: err.stack
+    })
 })
 
 app.listen(3000, () => console.log('http://localhost:3000'))
