@@ -17,7 +17,7 @@ module.exports = {
         const db = await coll
         const recipe = await db.findOne({ _id })
         if (recipe == null)
-            throw {error: `no such recipe: ${_id}`}
+            throw `no such recipe: ${_id}`
         return recipe
     },
 
@@ -26,7 +26,7 @@ module.exports = {
         const _id = uuid()
         const res = await db.insert({ _id, ...recipe })
         if (res.error)
-            throw {error: res.error}
+            throw res.error
         return _id
     },
 
@@ -39,15 +39,15 @@ module.exports = {
         const db = await coll
         const res = await db.updateOne({ _id: recipe._id }, { $set: recipe })
         if (res.error)
-            throw {error: res.error}
+            throw res.error
     },
 
     async delete(_id) {
         const db = await coll
         const res = await db.deleteOne({ _id })
         if (res.error)
-            throw {error: res.error}
-        if (res.result.deletedCount != 1)
-            throw {error: 'deletedCount = 0'}
+            throw res.error
+        if (res.deletedCount === 0)
+            throw `no such recipe: ${_id}`
     }
 }
