@@ -85,7 +85,7 @@ router.put('/:id', handleErrors(async (req, res) => {
         return
     }
 
-    await db.create({ _id: req.params.id, ...recipe })
+    await db.put({ _id: req.params.id, ...recipe })
     res.json(await db.get(req.params.id))
 }))
 
@@ -105,7 +105,7 @@ router.patch('/:id', handleErrors(async (req, res) => {
 // Deletes the recipe and returns nothing
 router.delete('/:id', handleErrors(async (req, res) => {
     await db.delete(req.params.id)
-    res.status(200).json({})
+    res.status(200).end()
 }))
 
 app.use('/recipes', router)
