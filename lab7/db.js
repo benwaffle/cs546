@@ -4,7 +4,7 @@ const conn = MongoClient.connect('mongodb://localhost:27017')
 const uuid = require('uuid/v4')
 
 const coll = conn
-    .then(c => c.db('lab7-recipes'))
+    .then(c => c.db(process.env.NODE_ENV === 'test' ? `lab7-test-${uuid()}` : 'lab7-recipes'))
     .then(db => db.collection('recipes'))
 
 module.exports = {
@@ -49,6 +49,11 @@ module.exports = {
             throw res.error
         if (res.deletedCount === 0)
             throw `no such recipe: ${_id}`
+    },
+
+    async deleteAll() {
+        const db = await coll
+        await db.deleteMany({})
     },
 
     async close() {
