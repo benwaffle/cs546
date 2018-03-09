@@ -53,7 +53,7 @@ module.exports = {
 
     async deleteAll() {
         const db = await coll
-        await db.deleteMany({})
+        await db.drop()
     },
 
     async close() {
