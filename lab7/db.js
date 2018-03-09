@@ -49,5 +49,9 @@ module.exports = {
             throw res.error
         if (res.deletedCount === 0)
             throw `no such recipe: ${_id}`
+    },
+
+    async close() {
+        await (await conn).close()
     }
 }
