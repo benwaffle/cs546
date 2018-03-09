@@ -40,6 +40,8 @@ module.exports = {
         const res = await db.updateOne({ _id: recipe._id }, { $set: recipe })
         if (res.error)
             throw res.error
+        if (res.matchedCount === 0)
+            throw {status: 404, error: `no such recipe: ${recipe._id}`}
     },
 
     async delete(_id) {
@@ -48,7 +50,7 @@ module.exports = {
         if (res.error)
             throw res.error
         if (res.deletedCount === 0)
-            throw `no such recipe: ${_id}`
+            throw {status: 404, error: `no such recipe: ${_id}`}
     },
 
     async deleteAll() {

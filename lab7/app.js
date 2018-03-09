@@ -4,7 +4,8 @@ const router = express.Router()
 const db = require('./db')
 
 app.use(require('body-parser').json())
-app.use(require('morgan')('dev')) // log requests
+if (process.env.NODE_ENV !== 'test')
+    app.use(require('morgan')('dev')) // log requests
 
 const handleErrors = fn => (req, res, next) => fn(req, res, next).catch(next)
 
