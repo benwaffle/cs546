@@ -1,7 +1,7 @@
 {
   "name": "lab7",
   "scripts": {
-    "start": "node app.js"
+    "start": "node server.js"
   },
   "author": "Ben Iofel - 10409085",
   "dependencies": {
