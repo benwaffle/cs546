@@ -67,11 +67,11 @@ p.success, p.failure {
 }
 
 #go-back {
-    animation: hard-to-get 4s linear infinite;
+    animation: hard-to-get 1s linear infinite;
     display: block;
-    width: 400px;
+    width: 200px;
 }
 
 @keyframes hard-to-get {
-    100% { transform: rotate(360deg); }
+    50% { transform: scale(2) translateX(55px); }
 }

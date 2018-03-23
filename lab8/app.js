@@ -13,14 +13,16 @@ app.get('/', (req, res) => {
 
 app.post('/result', (req, res) => {
     const str = req.body['text-to-test']
+    if (typeof str === undefined || str === '') {
+        return res.status(400).render('error')
+    }
     const clean = str.replace(/[^\w]/g, '').toLowerCase()
+    const result = (clean === clean.split('').reverse().join(''))
 
     res.render('result', {
         text: str,
-        className:
-            (clean === clean.split('').reverse().join(''))
-            ? 'success'
-            : 'failure'
+        className: result ? 'success' : 'failure',
+        info: `The string is ${result ? '' : 'not '}a palindrome`
     })
 })
 
