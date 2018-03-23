@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 app.post('/result', (req, res) => {
     const str = req.body['text-to-test']
-    const clean = str.replace(/[^\w]/g, '')
+    const clean = str.replace(/[^\w]/g, '').toLowerCase()
 
     res.render('result', {
         text: str,

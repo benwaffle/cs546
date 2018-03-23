@@ -30,9 +30,9 @@
         </form>
     </main>
     <script>
-        document.getElementsByTagName('li').forEach(li => {
+        Array.prototype.forEach.call(document.getElementsByTagName('li'), li => {
             li.addEventListener('click', (elem, ev) => {
-                document.getElementsByTagName('form')[0].value = li.textContent
+                document.getElementById('text-input').value = li.textContent
             })
         })
     </script>

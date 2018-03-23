@@ -7,3 +7,11 @@ form {
     margin-top: 100px;
     text-align: center;
 }
+
+p.success {
+    color: #28a745;
+}
+
+p.failure {
+    color: #dc3545;
+}
