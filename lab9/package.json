@@ -1,0 +1,10 @@
+{
+    "author": "Ben Iofel",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "express": "^4.16.3",
+        "morgan": "^1.9.0"
+    }
+}
