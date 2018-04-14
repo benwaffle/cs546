@@ -5,6 +5,10 @@
     <title>Login</title>
 </head>
 <body>
+    {{#if failed}}
+    <p>Error: invalid username or password</p>
+    {{/if}}
+
     <form id="login-form" action="/login" method="POST">
         <label for="username">Username: </label>
         <input id="username" name="username" required />
