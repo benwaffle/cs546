@@ -61,7 +61,6 @@ app.get('/logout', (req, res) => {
 
     res.send(`
 <!doctype html>
-    console.log(req.session)
 <html>
     <head>
         <title>Logged out</title>
